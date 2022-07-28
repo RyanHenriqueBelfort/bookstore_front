@@ -6,9 +6,9 @@ import { BookProvider } from "../contexts/BookContext"
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider>
-      <BookProvider>
-        <Component {...pageProps} />
-      </BookProvider>
+        <BookProvider>
+          <Component {...pageProps} />
+        </BookProvider>
     </ChakraProvider>
   )
 }
