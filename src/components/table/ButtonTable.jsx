@@ -17,6 +17,6 @@ export function ButtonTable({children, ...rest}){
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return(
-    <Button size='sm'{...rest} onClick={onOpen}>{children}</Button>
+    <Button size='sm'{...rest}>{children}</Button>
   )
 }

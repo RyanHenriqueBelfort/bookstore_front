@@ -7,20 +7,11 @@ import { NumberInputForm } from "../../../components/form/NumberInput"
 import { SelectInput } from "../../../components/form/SelectInput"
 import { BookContext } from "../../../contexts/BookContext"
 import { useForm,} from "react-hook-form";
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
-
-const CreateFormSchema = yup.object({
-  title: yup.string().required('Titulo é obrigatório'),
-  year: yup.number().required('Ano é obrigatório').positive('Te que ser numero positivo').integer(),
-})
 
 export default function Index() {
   const { author, gender, publisher } = useContext(BookContext) 
 
-  const { register, handleSubmit, formState:{ errors } } = useForm({
-    resolver: yupResolver(CreateFormSchema)
-  });
+  const { register, handleSubmit} = useForm();
 
   const onSubmit = data =>{
     api.post('/book', {
@@ -58,8 +49,8 @@ export default function Index() {
         justifyContent='flex-end'
       >
         <Stack spacing={5}>
-          <InputForm title='Titulo' label='Nome do livro' type='text' name='titulo' error={errors.title} {...register('titulo')}/>
-          <NumberInputForm label='Ano lançamento' type='number' name='Ano' error={errors.year} {...register('ano')}/>
+          <InputForm title='Titulo' label='Nome do livro' type='text' name='titulo' {...register('titulo')}/>
+          <NumberInputForm label='Ano lançamento' type='number' name='Ano' {...register('ano')}/>
           <SelectInput label='Autores' {...register('autores')}>
             {author.map((data) => {
               return (

@@ -25,11 +25,21 @@ export const BookProvider = ({ children }) => {
   }, []);
 
 
+  function destroy(id) {
+    api.delete(`/book/${id}`)
+    .then(() => setBook((prevBook => prevBook.filter((dados) => dados.id != id))))
+    .catch((err) => console.error(err))
+    // .then(() => api.get('/book')
+    //  .then(response => setBook(response.data)))
+  }
+
   return <BookContext.Provider value={{
     book,
     gender,
     publisher,
-    author
+    author,
+    setBook,
+    destroy
   }}>
     {children}
   </BookContext.Provider>
