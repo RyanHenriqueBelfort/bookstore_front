@@ -1,5 +1,6 @@
 import { useContext, useRef, useState, useEffect } from "react"
 import { BookContext } from "../../contexts/BookContext";
+import { useRouter } from "next/router"
 
 import {
   Td,
@@ -16,14 +17,15 @@ import {
   Button,
 } from "@chakra-ui/react"
 
-import { ButtonTable } from "./ButtonTable";
+import { ButtonTable } from "../table/ButtonTable";
 
 export function Book() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef()
   const [selectBook, setSelectBook] = useState()
+  const router = useRouter()
 
-  const { book, author, gender, publisher, destroy } = useContext(BookContext)
+  const { book, author, gender, publisher, destroyBook } = useContext(BookContext)
 
   function handleClick(id){
     setSelectBook(id)
@@ -32,7 +34,7 @@ export function Book() {
 
 
   function handleDelete() {
-      destroy(selectBook)
+      destroyBook(selectBook)
       onClose()
   }
 
@@ -48,26 +50,28 @@ export function Book() {
               <Td>{dados.title}</Td>
 
               <Td>{author.map((e) => (
-                e.id === dados.author_id ? e.name : ''
+                e.id == dados.author_id ? e.name : ''
               ))}</Td>
 
               <Td>{gender.map((e) => (
-                e.id === dados.gender_id ? e.name : ''
+                e.id == dados.gender_id ? e.name : ''
               ))}</Td>
 
               <Td>{publisher.map((e) => (
-                e.id === dados.publisher_id ? e.name : ''
+                e.id == dados.publisher_id ? e.name : ''
               ))}</Td>
               <Td isNumeric>{dados.release_year}</Td>
 
               <Td>
                 <Stack direction='row' spacing={5}>
-                  <ButtonTable colorScheme="linkedin">
+                  <ButtonTable colorScheme="linkedin" onClick={() => router.push(`/edit/book/${dados.id}`)}>
                     Editar
                   </ButtonTable>
-                  <ButtonTable colorScheme="red" onClick={() => handleClick(dados.id)}>
-                    Excluir
-                  </ButtonTable>
+                 
+                    <ButtonTable colorScheme="red" onClick={() => handleClick(dados.id)}>
+                      Excluir
+                    </ButtonTable>
+                
                   <AlertDialog
                     isOpen={isOpen}
                     leastDestructiveRef={cancelRef}

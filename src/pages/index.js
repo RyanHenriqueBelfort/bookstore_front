@@ -2,10 +2,15 @@ import {useContext } from "react"
 import { BookContext } from "../contexts/BookContext";
 
 import { Box, Tabs, TabList, Tab, TabPanel, TabPanels, TableContainer, Table, TableCaption, Thead, Td, Tr, Th, Tbody, Tfoot } from "@chakra-ui/react"
-import { Book } from "../components/table/Book";
+import { Book } from "../components/book/Book";
 import { Aba } from "../components/table/Aba";
 import { ButtonTable } from "../components/table/ButtonTable";
 import Link from "next/link";
+import { Author } from "../components/author/Author";
+import { TableBook } from "../components/book/TableBook";
+import { TableAuthor } from "../components/author/TableAuthor";
+import { TableGender } from "../components/gender/TableGender";
+import { TablePublisher } from "../components/publisher/TablePublisher";
 
 
 export default function Home() {
@@ -29,42 +34,16 @@ export default function Home() {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <TableContainer>
-              <Table variant='striped' colorScheme=''>
-                <Thead>
-                  <Tr>
-                    <Th color='gray.100'>Id</Th>
-                    <Th color='gray.100'>Livro</Th>
-                    <Th color='gray.100'>Autor</Th>
-                    <Th color='gray.100'>Gênero</Th>
-                    <Th color='gray.100'>Editora</Th>
-                    <Th isNumeric color='gray.100'>Ano lançamento</Th>
-                    <Th>
-                      <Link href='/create/book'>
-                        <a>
-                          <ButtonTable colorScheme='green' size='md'>Novo</ButtonTable>
-                        </a>
-                      </Link>
-                    </Th>
-                  </Tr>
-                </Thead>
-                
-                {/* Component dos Livros */}
-                <Book />
-
-
-                <Tfoot>
-                  <Tr>
-                    <Th>To convert</Th>
-                    <Th>into</Th>
-                    <Th isNumeric>multiply by</Th>
-                  </Tr>
-                </Tfoot>
-              </Table>
-            </TableContainer>
+            <TableBook />
           </TabPanel>
           <TabPanel>
-            <p>two!</p>
+            <TableAuthor />
+          </TabPanel>
+          <TabPanel>
+            <TableGender />
+          </TabPanel>
+          <TabPanel>
+            <TablePublisher />
           </TabPanel>
         </TabPanels>
       </Tabs>

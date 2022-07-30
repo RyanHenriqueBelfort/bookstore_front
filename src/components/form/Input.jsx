@@ -5,7 +5,7 @@ const InputBase = ({title, label, name, ...rest }, ref) => {
   return (
     <FormControl isRequired>
       <FormLabel>{title}</FormLabel>
-      <Input placeholder={label} type='text' name={name} id={name} ref={ref} {...rest}/>
+      <Input placeholder={label} name={name} id={name} ref={ref} {...rest}/>
     </FormControl>
   )
 }

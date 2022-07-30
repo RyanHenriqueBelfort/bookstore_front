@@ -25,12 +25,29 @@ export const BookProvider = ({ children }) => {
   }, []);
 
 
-  function destroy(id) {
+  function destroyBook(id) {
     api.delete(`/book/${id}`)
-    .then(() => setBook((prevBook => prevBook.filter((dados) => dados.id != id))))
+    .then(() => api.get('/book')
+    .then(response => setBook(response.data)))
     .catch((err) => console.error(err))
-    // .then(() => api.get('/book')
-    //  .then(response => setBook(response.data)))
+  }
+  function destroyGender(id) {
+    api.delete(`/gender/${id}`)
+    .then(() =>  api.get('/gender')
+    .then(response => setGender(response.data)))
+    .then(response => console.log(response))
+    .catch((err) => console.error(err.response))
+  }
+  function destroyAuthor(id) {
+    api.delete(`/author/${id}`)
+    .then(() => setAuthor((prevBook => prevBook.filter((dados) => dados.id != id))))
+    .catch((err) => console.error(err))
+  }
+  function destroyPublisher(id) {
+    api.delete(`/publisher/${id}`)
+    .then(() => api.get('/publisher')
+    .then(response => setPublisher(response.data)))
+    .catch((err) => console.error(err))
   }
 
   return <BookContext.Provider value={{
@@ -39,7 +56,10 @@ export const BookProvider = ({ children }) => {
     publisher,
     author,
     setBook,
-    destroy
+    destroyBook,
+    destroyGender,
+    destroyAuthor,
+    destroyPublisher
   }}>
     {children}
   </BookContext.Provider>
