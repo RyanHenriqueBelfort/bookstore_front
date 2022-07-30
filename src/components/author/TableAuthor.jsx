@@ -17,7 +17,7 @@ export function TableAuthor() {
             <Th color='gray.100'>Nacionalidade</Th>
 
             <Th>
-              <Link href='/create/book'>
+              <Link href='/create/author'>
                 <a>
                   <ButtonTable colorScheme='green' size='md'>Novo</ButtonTable>
                 </a>

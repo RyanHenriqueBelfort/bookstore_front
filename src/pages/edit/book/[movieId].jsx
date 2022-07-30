@@ -33,7 +33,6 @@ export default function Index() {
   }, [book]);
 
   const onSubmit = data => {
-    console.log(data)
     api.put(`/book/${currentRouter}`,
       {
         title: data.titulo,

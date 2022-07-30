@@ -1,50 +1,53 @@
-import { useContext, useEffect } from "react"
+import { useContext, useState, useEffect } from "react"
 import { api } from '../../../service/axios'
 import { useRouter } from "next/router"
 
-import { Box, Button, Center, color, Flex, FormControl, RadioGroup, Radio, FormHelperText, FormLabel, Input, Stack } from "@chakra-ui/react"
+import { Box, Button, Flex, FormControl, FormLabel, Input, RadioGroup, Radio, Stack } from "@chakra-ui/react"
 import { InputForm } from "../../../components/form/Input"
 import { NumberInputForm } from "../../../components/form/NumberInput"
 import { SelectInput } from "../../../components/form/SelectInput"
 import { BookContext } from "../../../contexts/BookContext"
-import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
-import Link from "next/link"
+import { useForm } from "react-hook-form";
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Index() {
-  const { author, gender, book, publisher, setAuthor } = useContext(BookContext)
-  const { register, handleSubmit } = useForm();
+  const { author, setAuthor} = useContext(BookContext)
+  const { register, handleSubmit, control, reset, watch } = useForm();
+  const router = useRouter()
+  const currentRouter = router.query.authorId
+  const notify = () => toast.success("Autor editado com sucesso", {
+    draggable: true,
+    closeOnClick: true
+  });
 
-  const notifySuccess = () => toast.success("Autor criado com sucesso", {
-    draggable: true,
-    closeOnClick: true
-  });
-  const notifyError = () => toast.error("Preencha todos os campos", {
-    draggable: true,
-    closeOnClick: true
-  });
+  useEffect(() => {
+    const currentAuthor = new Promise((resolve, reject) => {
+      resolve(author.find((dados) => dados.id == currentRouter))
+    })
+    currentAuthor.then(value => {
+      if (value) {
+        reset({ name: value.name, year_birth: value.year_birth, nationality: value.nationality, gender: value.gender})
+      }
+    })
+  }, [author]);
 
   const onSubmit = data => {
-    if (data.autores == "DEFAULT" | data.editora == "DEFAULT" | data.generos == "DEFAULT") {
-      notifyError()
-    } else {
-      api.post('/author', {
+    api.put(`/author/${currentRouter}`,
+      {
         name: data.name,
         year_birth: data.year_birth,
-        gender: data.gender,
         nationality: data.nationality,
+        gender: data.gender
       })
-        .then(() => api.get('/author')
-          .then(response => setAuthor(response.data))
-          .then(() => notifySuccess()))
-
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
-
+      .then(() => api.get('/author')
+        .then(response => setAuthor(response.data)))
+      .catch(function (error) {
+        console.log(error);
+      });
   };
+
+  const values = watch()
 
   return (
     <Flex
@@ -53,7 +56,6 @@ export default function Index() {
       h='100vh'
       align='center'
       justify='center'
-      gap='50'
       textColor='white'
     >
       <Flex
@@ -68,7 +70,7 @@ export default function Index() {
       >
         <Stack spacing={5}>
           <InputForm title='Nome' label='Nome do autor' type='text' name='name' {...register('name')} />
-          {/* <NumberInputForm label='Ano lançamento' type='number' name='Ano' {...register('ano')} /> */}
+
           <InputForm
             title='Data de nascimento'
             label='Data de nascimento'
@@ -81,20 +83,17 @@ export default function Index() {
 
           <RadioGroup name='sexo-form'>
             <Stack direction='row'>
-              <Radio value='M' onClick={(e)=> e.preventDefault} {...register('gender')}>Masculino</Radio>
+              <Radio value='M' checked="checked" onClick={(e)=> e.preventDefault} {...register('gender')}>Masculino</Radio>
               <Radio value='F' {...register('gender')}>Feminino</Radio>
             </Stack>
           </RadioGroup>
-
-          <Button type="submit" colorScheme='green'>Criar</Button>
-          <Link href='/'>
-            <Button bg='gray.600' _hover={{
-              bg: 'gray.500'
-            }}>Cancelar</Button>
-          </Link>
+          <Button type="submit" colorScheme='messenger' onClick={notify}>Editar</Button>
+          <Button bg='gray.600' _hover={{
+            bg: 'gray.500'
+          }} onClick={() => router.push('/')}>Cancelar</Button>
         </Stack>
-        <ToastContainer />
       </Flex>
+      <ToastContainer />
     </Flex>
   )
 }

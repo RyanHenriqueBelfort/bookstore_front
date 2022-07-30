@@ -59,7 +59,7 @@ export function Author() {
 
               <Td>
                 <Stack direction='row' spacing={5}>
-                  <ButtonTable colorScheme="linkedin" onClick={() => router.push(`/edit/book/${dados.id}`)}>
+                  <ButtonTable colorScheme="linkedin" onClick={() => router.push(`/edit/author/${dados.id}`)}>
                     Editar
                   </ButtonTable>
                  

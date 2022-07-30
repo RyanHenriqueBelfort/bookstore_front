@@ -26,9 +26,6 @@ export default function Index() {
   });
 
   const onSubmit = data => {
-    if (data.autores == "DEFAULT" | data.editora == "DEFAULT" | data.generos == "DEFAULT") {
-      notifyError()
-    } else {
       api.post('/book', {
         title: data.titulo,
         release_year: data.ano,
@@ -43,8 +40,6 @@ export default function Index() {
         .catch(function (error) {
           console.log(error);
         });
-    }
-
   };
 
   return (

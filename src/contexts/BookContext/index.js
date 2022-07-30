@@ -35,7 +35,6 @@ export const BookProvider = ({ children }) => {
     api.delete(`/gender/${id}`)
     .then(() =>  api.get('/gender')
     .then(response => setGender(response.data)))
-    .then(response => console.log(response))
     .catch((err) => console.error(err.response))
   }
   function destroyAuthor(id) {
@@ -55,11 +54,14 @@ export const BookProvider = ({ children }) => {
     gender,
     publisher,
     author,
-    setBook,
     destroyBook,
     destroyGender,
     destroyAuthor,
-    destroyPublisher
+    destroyPublisher,
+    setBook,
+    setGender,
+    setAuthor,
+    setPublisher
   }}>
     {children}
   </BookContext.Provider>
