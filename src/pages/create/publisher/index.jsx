@@ -65,7 +65,7 @@ export default function Index() {
           <Link href='/'>
             <Button bg='gray.600' _hover={{
               bg: 'gray.500'
-            }}>Cancelar</Button>
+            }}>Voltar</Button>
           </Link>
         </Stack>
         <ToastContainer />

@@ -76,9 +76,7 @@ export default function Index() {
             </option>
             {author.map((data) => {
               return (
-                <>
-                  <option style={{ color: 'black' }} key={data.autor} value={data.id}>{data.name}</option>
-                </>
+                  <option style={{ color: 'black' }} key={data.id} value={data.id}>{data.name}</option>
               )
             })}
           </SelectInput>
@@ -109,7 +107,7 @@ export default function Index() {
           <Link href='/'>
             <Button bg='gray.600' _hover={{
               bg: 'gray.500'
-            }}>Cancelar</Button>
+            }}>Voltar</Button>
           </Link>
         </Stack>
         <ToastContainer /> 

@@ -88,7 +88,7 @@ export default function Index() {
           <Button type="submit" colorScheme='messenger' onClick={notify}>Editar</Button>
           <Button bg='gray.600' _hover={{
             bg: 'gray.500'
-          }} onClick={() => router.push('/')}>Cancelar</Button>
+          }} onClick={() => router.push('/')}>Voltar</Button>
         </Stack>
       </Flex>
       <ToastContainer />

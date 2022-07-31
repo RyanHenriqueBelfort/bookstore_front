@@ -10,7 +10,7 @@ export const BookProvider = ({ children }) => {
   const [author, setAuthor] = useState([]);
 
   useEffect(() => {
-    //Roda na quando na primeira execução da pagina
+    //Roda na primeira execução da pagina
     api.get('/author')
       .then(response => setAuthor(response.data))
 

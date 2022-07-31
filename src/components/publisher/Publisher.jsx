@@ -83,7 +83,7 @@ export function Publisher() {
 
                     <AlertDialogFooter>
                       <Button ref={cancelRef} onClick={onClose} bg='gray.300'>
-                        Cancelar
+                        Voltar
                       </Button>
                       <Button colorScheme='red' onClick={() => handleDelete()} ml={3}>
                         Excluir

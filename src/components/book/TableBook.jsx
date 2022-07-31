@@ -1,8 +1,7 @@
 import { TableContainer, Table, Thead, Tr, Th } from '@chakra-ui/react'
 import Link from "next/link";
-import {Book} from './Book'
+import { Book } from './Book'
 import { ButtonTable } from '../table/ButtonTable';
-
 
 export function TableBook() {
   return (
