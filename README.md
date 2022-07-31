@@ -1,5 +1,5 @@
 ## Bem vindo a <font size="8">📚BookStore!</font>
-Ola, projeto criado partir de um desafio, onde foi proposto para criar um crud de uma 
+Ola, projeto criado a partir de um desafio, onde foi proposto criar um crud de uma 
 biblioteca
 
 
