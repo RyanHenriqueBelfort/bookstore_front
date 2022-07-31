@@ -10,7 +10,7 @@ Tabela de conteúdos
 [Instalação](#instalação) 
 [Pre Requisitos](#pre-requisitos) 
 [Passa a Passo](#passo-a-passo) 
-[Tecnologias](#tecnologias) <!--te-->
+[Tecnologias](#🛠tecnologias) <!--te-->
 
 
 
