@@ -1,11 +1,9 @@
-import { useContext, useState, useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { api } from '../../../service/axios'
 import { useRouter } from "next/router"
 
-import { Box, Button, Flex, FormControl, FormLabel, Input, RadioGroup, Radio, Stack } from "@chakra-ui/react"
+import { Box, Button, Flex, RadioGroup, Radio, Stack } from "@chakra-ui/react"
 import { InputForm } from "../../../components/form/Input"
-import { NumberInputForm } from "../../../components/form/NumberInput"
-import { SelectInput } from "../../../components/form/SelectInput"
 import { BookContext } from "../../../contexts/BookContext"
 import { ToastContainer, toast } from 'react-toastify';
 import { useForm } from "react-hook-form";

@@ -1,4 +1,4 @@
-import { useContext, useRef, useState, useEffect } from "react"
+import { useContext, useRef, useState } from "react"
 import { BookContext } from "../../contexts/BookContext";
 import { useRouter } from "next/router"
 

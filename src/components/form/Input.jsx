@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Input, FormErrorMessage  } from "@chakra-ui/react"
+import { FormControl, FormLabel, Input } from "@chakra-ui/react"
 import { forwardRef } from "react";
 
 const InputBase = ({title, label, name, ...rest }, ref) => {

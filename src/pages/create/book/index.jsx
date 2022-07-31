@@ -1,10 +1,8 @@
 import { useContext, useEffect } from "react"
 import { api } from '../../../service/axios'
-import { useRouter } from "next/router"
 
-import { Box, Button, Center, color, Flex, FormControl, FormHelperText, FormLabel, Input, Stack } from "@chakra-ui/react"
+import { Button, Flex, Stack } from "@chakra-ui/react"
 import { InputForm } from "../../../components/form/Input"
-import { NumberInputForm } from "../../../components/form/NumberInput"
 import { SelectInput } from "../../../components/form/SelectInput"
 import { BookContext } from "../../../contexts/BookContext"
 import { useForm } from "react-hook-form";

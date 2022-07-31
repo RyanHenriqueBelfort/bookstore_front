@@ -1,11 +1,8 @@
 import { useContext, useEffect } from "react"
 import { api } from '../../../service/axios'
-import { useRouter } from "next/router"
 
-import { Box, Button, Center, color, Flex, FormControl, RadioGroup, Radio, FormHelperText, FormLabel, Input, Stack } from "@chakra-ui/react"
+import { Button, Flex, RadioGroup, Radio, Stack } from "@chakra-ui/react"
 import { InputForm } from "../../../components/form/Input"
-import { NumberInputForm } from "../../../components/form/NumberInput"
-import { SelectInput } from "../../../components/form/SelectInput"
 import { BookContext } from "../../../contexts/BookContext"
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
@@ -68,7 +65,6 @@ export default function Index() {
       >
         <Stack spacing={5}>
           <InputForm title='Nome' label='Nome do autor' type='text' name='name' {...register('name')} />
-          {/* <NumberInputForm label='Ano lançamento' type='number' name='Ano' {...register('ano')} /> */}
           <InputForm
             title='Data de nascimento'
             label='Data de nascimento'

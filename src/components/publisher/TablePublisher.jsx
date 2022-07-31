@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ButtonTable } from '../table/ButtonTable';
 import { Publisher } from './Publisher';
 
-
 export function TablePublisher() {
   return (
     <TableContainer  size='lg' justifyContent='space-between'>
@@ -15,7 +14,7 @@ export function TablePublisher() {
             <Th color='gray.100'>Descrição</Th>
             
             <Th>
-              <Link href='/create/book'>
+              <Link href='/create/publisher'>
                 <a>
                   <ButtonTable colorScheme='green' size='md'>Novo</ButtonTable>
                 </a>

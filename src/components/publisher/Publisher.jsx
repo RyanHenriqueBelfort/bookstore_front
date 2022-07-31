@@ -1,4 +1,4 @@
-import { useContext, useRef, useState, useEffect } from "react"
+import { useContext, useRef, useState } from "react"
 import { BookContext } from "../../contexts/BookContext";
 import { useRouter } from "next/router"
 
@@ -26,7 +26,7 @@ export function Publisher() {
   const [selectBook, setSelectBook] = useState()
   const router = useRouter()
 
-  const { publisher, destroyPublisher, book } = useContext(BookContext)
+  const { publisher, destroyPublisher } = useContext(BookContext)
 
   function handleClick(id) {
     setSelectBook(id)
@@ -55,7 +55,7 @@ export function Publisher() {
 
           <Td>
             <Stack direction='row' spacing={5}>
-              <ButtonTable colorScheme="linkedin" onClick={() => router.push(`/edit/book/${dados.id}`)}>
+              <ButtonTable colorScheme="linkedin" onClick={() => router.push(`/edit/publisher/${dados.id}`)}>
                 Editar
               </ButtonTable>
 

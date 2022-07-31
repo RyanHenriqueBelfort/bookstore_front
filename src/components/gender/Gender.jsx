@@ -1,4 +1,4 @@
-import { useContext, useRef, useState, useEffect } from "react"
+import { useContext, useRef, useState } from "react"
 import { BookContext } from "../../contexts/BookContext";
 import { useRouter } from "next/router"
 
@@ -26,7 +26,7 @@ export function Gender() {
   const [selectBook, setSelectBook] = useState()
   const router = useRouter()
 
-  const { gender, destroyGender, book } = useContext(BookContext)
+  const { gender, destroyGender } = useContext(BookContext)
 
   function handleClick(id) {
     setSelectBook(id)
@@ -52,7 +52,7 @@ export function Gender() {
 
           <Td>
             <Stack direction='row' spacing={5}>
-              <ButtonTable colorScheme="linkedin" onClick={() => router.push(`/edit/book/${dados.id}`)}>
+              <ButtonTable colorScheme="linkedin" onClick={() => router.push(`/edit/gender/${dados.id}`)}>
                 Editar
               </ButtonTable>
 

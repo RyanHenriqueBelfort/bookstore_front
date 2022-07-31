@@ -12,9 +12,8 @@ export function TableGender() {
           <Tr>
             <Th color='gray.100'>Id</Th>
             <Th color='gray.100'>name</Th>
-            
             <Th>
-              <Link href='/create/book'>
+              <Link href='/create/gender'>
                 <a>
                   <ButtonTable colorScheme='green' size='md'>Novo</ButtonTable>
                 </a>
