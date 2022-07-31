@@ -9,8 +9,7 @@ Tabela de conteúdos
 [Feature](#feature)
 [Instalação](#instalação) 
 [Pre Requisitos](#pre-requisitos) 
-[Passa a Passo](#passo-a-passo) 
-[Tecnologias](#🛠tecnologias) <!--te-->
+[Passa a Passo](#passo-a-passo)  <!--te-->
 
 
 
