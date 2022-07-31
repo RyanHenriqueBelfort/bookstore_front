@@ -8,11 +8,9 @@ Tabela de conteúdos
 <!--ts--> 
 [Feature](#feature)
 [Instalação](#instalação) 
-	[Pre Requisitos](#pre-requisitos) 
-	[Passa a Passo](#passo-a-passo) 
-	[Como usar](#como-usar) 
-	[Local files](#local-files) 
-	[Tecnologias](#tecnologias) <!--te-->
+[Pre Requisitos](#pre-requisitos) 
+[Passa a Passo](#passo-a-passo) 
+[Tecnologias](#tecnologias) <!--te-->
 
 
 
