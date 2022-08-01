@@ -6,7 +6,7 @@ import { Publisher } from "./Publisher";
 export function TablePublisher() {
   return (
     <TableContainer size="lg" justifyContent="space-between">
-      <Table variant="striped">
+      <Table variant="striped" colorScheme=''>
         <Thead>
           <Tr>
             <Th color="gray.100">Id</Th>
