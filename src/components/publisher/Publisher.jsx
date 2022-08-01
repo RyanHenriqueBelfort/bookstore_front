@@ -1,6 +1,6 @@
-import { useContext, useRef, useState } from "react"
+import { useContext, useRef, useState } from "react";
 import { BookContext } from "../../contexts/BookContext";
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
 
 import {
   Td,
@@ -15,77 +15,79 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
   Button,
-} from "@chakra-ui/react"
+} from "@chakra-ui/react";
 
 import { ButtonTable } from "../table/ButtonTable";
 
 export function Publisher() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = useRef();
+  const [selectBook, setSelectBook] = useState();
+  const router = useRouter();
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const cancelRef = useRef()
-  const [selectBook, setSelectBook] = useState()
-  const router = useRouter()
-
-  const { publisher, destroyPublisher } = useContext(BookContext)
+  const { publisher, destroyPublisher, book } = useContext(BookContext);
 
   function handleClick(id) {
-    setSelectBook(id)
-    onOpen()
+    setSelectBook(id);
+    onOpen();
   }
 
-
   function handleDelete() {
-    destroyPublisher(selectBook) 
-    onClose()
+    const allIdPublisher = book.filter((data) => {
+      return data.publisher_id == selectBook;
+    });
+    if (allIdPublisher.length > 0) {
+      alert("Editora já está em uso");
+    } else {
+      destroyPublisher(selectBook);
+    }
+    onClose();
   }
 
   return (
-
-    <Tbody
-      color='gray.300'
-    >
+    <Tbody color="gray.300">
       {publisher.map((dados) => (
         <Tr key={dados.id}>
           <Td>{dados.id}</Td>
-
           <Td>{dados.name}</Td>
-
           <Td>{dados.description}</Td>
-          
-
           <Td>
-            <Stack direction='row' spacing={5}>
-              <ButtonTable colorScheme="linkedin" onClick={() => router.push(`/edit/publisher/${dados.id}`)}>
+            <Stack direction="row" spacing={5}>
+              <ButtonTable
+                colorScheme="linkedin"
+                onClick={() => router.push(`/edit/publisher/${dados.id}`)}
+              >
                 Editar
               </ButtonTable>
-
-              <ButtonTable colorScheme="red" onClick={() => handleClick(dados.id)}>
+              <ButtonTable
+                colorScheme="red"
+                onClick={() => handleClick(dados.id)}
+              >
                 Excluir
               </ButtonTable>
-
               <AlertDialog
                 isOpen={isOpen}
                 leastDestructiveRef={cancelRef}
                 onClose={onClose}
                 blockScrollOnMount
               >
-                <AlertDialogOverlay
-                  bg='#0b0b0b15'
-                >
-                  <AlertDialogContent >
-                    <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                <AlertDialogOverlay bg="#0b0b0b15">
+                  <AlertDialogContent>
+                    <AlertDialogHeader fontSize="lg" fontWeight="bold">
                       Deletar Gênero
                     </AlertDialogHeader>
-
                     <AlertDialogBody>
                       Voce tem certeza? Você não pode desfazer essa ação depois.
                     </AlertDialogBody>
-
                     <AlertDialogFooter>
-                      <Button ref={cancelRef} onClick={onClose} bg='gray.300'>
+                      <Button ref={cancelRef} onClick={onClose} bg="gray.300">
                         Voltar
                       </Button>
-                      <Button colorScheme='red' onClick={() => handleDelete()} ml={3}>
+                      <Button
+                        colorScheme="red"
+                        onClick={() => handleDelete()}
+                        ml={3}
+                      >
                         Excluir
                       </Button>
                     </AlertDialogFooter>
@@ -97,5 +99,5 @@ export function Publisher() {
         </Tr>
       ))}
     </Tbody>
-  )
+  );
 }

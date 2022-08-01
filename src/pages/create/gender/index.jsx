@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react"
 import { api } from '../../../service/axios'
 
-import { Button, Center, Flex, Stack } from "@chakra-ui/react"
+import { Button, Flex, Stack } from "@chakra-ui/react"
 import { InputForm } from "../../../components/form/Input"
 import { BookContext } from "../../../contexts/BookContext"
 import { useForm } from "react-hook-form";
@@ -17,10 +17,6 @@ export default function Index() {
     draggable: true,
     closeOnClick: true
   });
-  const notifyError = () => toast.error("Preencha todos os campos", {
-    draggable: true,
-    closeOnClick: true
-  });
 
   const onSubmit = data => {
       api.post('/gender', {
@@ -29,7 +25,6 @@ export default function Index() {
         .then(() => api.get('/gender')
           .then(response => setGender(response.data))
           .then(() => notifySuccess()))
-
         .catch(function (error) {
           console.log(error);
         });
