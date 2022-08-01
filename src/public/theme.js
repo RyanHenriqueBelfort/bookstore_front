@@ -23,7 +23,6 @@ const config = {
   styles:{
     global: {
       body: {
-        // bg: 'gray.900',
         color: 'white'
       }
     }
